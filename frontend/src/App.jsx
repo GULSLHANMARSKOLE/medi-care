@@ -6,7 +6,9 @@ import Doctors from "./pages/Doctors";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
-
+import DoctorDetails from "./pages/DoctorDetails";
+import Appointment from "./pages/Appointment";
+import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +20,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/doctors/:id" element={<DoctorDetails/>}/>
+        <Route path="/appointment/:id" element={<Appointment />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

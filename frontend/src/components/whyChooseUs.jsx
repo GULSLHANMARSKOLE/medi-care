@@ -18,7 +18,7 @@ function WhyChooseUs() {
           <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
             <FaUserDoctor className="text-5xl text-blue-600 mb-6" />
 
-            <h3 className="text-2xl font-semibold mb-4">
+            <h3 className="text-2xl dark:text-white font-semibold mb-4">
               Experienced Doctors
             </h3>
 
@@ -30,7 +30,7 @@ function WhyChooseUs() {
           <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
             <FaClock className="text-5xl text-green-600 mb-6" />
 
-            <h3 className="text-2xl font-semibold mb-4">
+            <h3 className="text-2xl dark:text-white font-semibold mb-4">
               24/7 Availability
             </h3>
 
@@ -42,7 +42,7 @@ function WhyChooseUs() {
           <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
             <FaShieldHeart className="text-5xl text-red-500 mb-6" />
 
-            <h3 className="text-2xl font-semibold mb-4">
+            <h3 className="text-2xl dark:text-white font-semibold mb-4">
               Trusted Care
             </h3>
 
