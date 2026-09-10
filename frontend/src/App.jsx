@@ -9,23 +9,34 @@ import Navbar from "./components/Navbar";
 import DoctorDetails from "./pages/DoctorDetails";
 import Appointment from "./pages/Appointment";
 import Dashboard from "./pages/Dashboard";
+import DoctorDashboard from "./pages/DoctorDashboard";
+import DoctorLogin from "./pages/DoctorLogin";
+import AdminDashboard from "./pages/adminDashboard";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/doctors/:id" element={<DoctorDetails/>}/>
+
+        <Route path="/doctor/login" element={<DoctorLogin />} />
+
+        <Route path="/doctors/:id" element={<DoctorDetails />} />
+
         <Route path="/appointment/:id" element={<Appointment />} />
+
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;

@@ -15,10 +15,16 @@ function Register() {
     setError("");
     setLoading(true);
     try {
-      await registerUser(name, email, password);
+      await registerUser({
+        name,
+        email,
+        password,
+      });
       navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed. Try again.");
+      setError(
+        err.response?.data?.message || "Registration failed. Try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -27,7 +33,9 @@ function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Register</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+          Register
+        </h2>
 
         {error && (
           <div className="bg-red-100 text-red-600 p-2 rounded mb-4 text-sm">

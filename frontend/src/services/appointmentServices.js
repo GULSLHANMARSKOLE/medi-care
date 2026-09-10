@@ -16,3 +16,10 @@ export const cancelAppointment=async(id)=>{
     const response=await axios.delete(`${API_URL}/${id}`);
     return response.data;
 }
+export const getDoctorAppointments = async (doctorId) => {
+  const response = await axios.get(`${API_URL}/doctor/${doctorId}`);
+  return response.data;
+};
+
+
+

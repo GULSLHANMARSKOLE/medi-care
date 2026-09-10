@@ -37,6 +37,21 @@ const deleteAppointment =async(req,res)=>{
         });
     }
 };
+const getAppointmentsByDoctor = async (req, res) => {
+  try {
+    const appointments = await Appointment.find({
+      doctorId: req.params.doctorId,
+    }).sort({ date: 1, time: 1 });
+
+    res.status(200).json(appointments);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch doctor appointments",
+    });
+  }
+};
 module.exports={
-    createAppointment,getAppointmentsByEmail,deleteAppointment,
+    createAppointment,getAppointmentsByEmail,deleteAppointment,getAppointmentsByDoctor,
 };
