@@ -8,7 +8,7 @@ const {
   createDoctor,
   getPatientCount,
   updateDoctorImage,
-} = require("../controllers/AdminController");
+} = require("../controllers/adminController");
 
 // Create doctor
 router.post(

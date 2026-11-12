@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const DoctorProfile = require("../models/DoctorProfile");
+const DoctorProfile = require("../models/Doctorprofile");
 const bcrypt = require("bcryptjs");
 
 // ================= CREATE DOCTOR =================
