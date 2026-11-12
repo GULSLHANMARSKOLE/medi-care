@@ -41,8 +41,8 @@ function Footer() {
         <div>
           <h3 className="font-bold text-xl mb-4">Contact</h3>
           <ul className="space-y-2 text-gray-400">
-            <li>Email:gmarskole038.btech2023@cse.nitrr.ac.in</li>
-            <li>Phone: +91 9302818832</li>
+            <li>Email:gulshan.btech2023@cse.nitrr.ac.in</li>
+            <li>Phone: +91 9302231466</li>
           </ul>
         </div>
         <div className="pl-10">

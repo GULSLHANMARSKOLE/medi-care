@@ -13,9 +13,7 @@ function Navbar() {
   return (
     <nav className="flex justify-between p-9 bg-blue-600 text-white dark:bg-gray-900">
       {/* Logo */}
-      <h1 className="text-3xl font-bold dark:text-yellow-300">
-        Medi care
-      </h1>
+      <h1 className="text-3xl font-bold dark:text-yellow-300">Medi care</h1>
       {/* Navigation */}
       <div className="flex gap-5 items-center">
         <Link to="/">Home</Link>
@@ -33,20 +31,18 @@ function Navbar() {
           <>
             {/* Patient Navigation */}
             {user.role === "patient" && (
-              <Link to="/dashboard">
-                My Appointments
-              </Link>
+              <Link to="/dashboard">My Appointments</Link>
             )}
             {/* Doctor Navigation */}
             {user.role === "doctor" && (
-              <Link to="/doctor/dashboard">
-                Doctor Dashboard
-              </Link>
+              <Link to="/doctor/dashboard">Doctor Dashboard</Link>
+            )}
+            {/* Admin Navigation */}
+            {user.role === "admin" && (
+              <Link to="/admin/dashboard">Admin Dashboard</Link>
             )}
             {/* User Name */}
-            <span className="text-white font-medium">
-              Hi, {user.name}
-            </span>
+            <span className="text-white font-medium">Hi, {user.name}</span>
             {/* Logout */}
             <button
               onClick={handleLogout}
