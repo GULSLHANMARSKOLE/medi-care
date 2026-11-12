@@ -1,18 +1,18 @@
-import axios from "axios";
+import api from "../api";
 
-const API_URL = "http://localhost:5000/api/doctors";
-const AUTH_URL = "http://localhost:5000/api/auth";
+const API_URL = "/api/doctors";
+const AUTH_URL = "/api/auth";
 
 // Get all doctors
 export const getDoctors = async () => {
-  const response = await axios.get(API_URL);
+  const response = await api.get(API_URL);
 
   return response.data;
 };
 
 // Get doctor by ID
 export const getDoctorById = async (id) => {
-  const response = await axios.get(
+  const response = await api.get(
     `${API_URL}/${id}`
   );
 
@@ -21,7 +21,7 @@ export const getDoctorById = async (id) => {
 
 // Doctor login
 export const loginDoctor = async (credentials) => {
-  const response = await axios.post(
+  const response = await api.post(
     `${AUTH_URL}/login`,
     credentials,
     {
@@ -34,7 +34,7 @@ export const loginDoctor = async (credentials) => {
 
 // Get logged-in doctor profile
 export const getDoctorProfile = async () => {
-  const response = await axios.get(
+  const response = await api.get(
     `${API_URL}/profile`,
     {
       withCredentials: true,

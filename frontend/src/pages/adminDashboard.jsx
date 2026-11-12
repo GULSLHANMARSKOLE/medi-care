@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function AdminDashboard() {
   const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ function AdminDashboard() {
     try {
       setLoadingDoctors(true);
 
-      const response = await axios.get("http://localhost:5000/api/doctors");
+      const response = await api.get("/api/doctors");
 
       setDoctors(response.data);
     } catch (error) {
@@ -42,8 +42,8 @@ function AdminDashboard() {
     try {
       setLoadingPatients(true);
 
-      const response = await axios.get(
-        "http://localhost:5000/api/admin/patients/count",
+      const response = await api.get(
+        "/api/admin/patients/count",
         {
           withCredentials: true,
         },
@@ -78,8 +78,8 @@ function AdminDashboard() {
     setAddingDoctor(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/admin/doctors",
+      const response = await api.post(
+        "/api/admin/doctors",
         formData,
         {
           withCredentials: true,
