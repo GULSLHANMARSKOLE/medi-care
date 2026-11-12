@@ -1,7 +1,10 @@
+
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
+
+dotenv.config();
 
 const connectDB = require("./config/db");
 
@@ -9,27 +12,31 @@ const appointmentRoutes = require("./routes/appointmentRoutes");
 const authRoutes = require("./routes/authRoutes");
 const DoctorRoutes = require("./routes/DoctorRoutes");
 const AdminRoutes = require("./routes/adminRoutes");
-dotenv.config();
 
 connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
 
 app.use(express.json());
-
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/doctors", DoctorRoutes);
 app.use("/api/admin", AdminRoutes);
+
 app.get("/", (req, res) => {
   res.send("Medical Care API Running");
 });

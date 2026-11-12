@@ -8,6 +8,7 @@ const {
   registerDoctor,
   loginDoctor,
   getDoctors,
+  getDoctorById,
 } = require("../controllers/DoctorController");
 
 
@@ -17,6 +18,7 @@ router.post("/login", loginDoctor);
 
 router.get("/", getDoctors);
 
+// Keep /profile BEFORE /:id
 router.get(
   "/profile",
   protectDoctor,
@@ -27,5 +29,9 @@ router.get(
     });
   }
 );
+
+// Get doctor by MongoDB ID
+router.get("/:id", getDoctorById);
+
 
 module.exports = router;

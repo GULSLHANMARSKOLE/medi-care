@@ -54,7 +54,7 @@ const createDoctor = async (req, res) => {
       role: "doctor",
     });
 
-    // Create Doctor Profile
+// Create Doctor Profile
     const doctorProfile = await DoctorProfile.create({
       userId: user._id,
       speciality,
@@ -85,7 +85,63 @@ const createDoctor = async (req, res) => {
     });
   }
 };
+// ================= GET PATIENT COUNT =================
+const getPatientCount = async (req, res) => {
+  try {
+    const count = await User.countDocuments({
+      role: "patient",
+    });
 
+    return res.status(200).json({
+      count,
+    });
+  } catch (error) {
+    console.error("Get patient count error:", error);
+
+    return res.status(500).json({
+      message: "Failed to get patient count",
+    });
+  }
+};
+// ================= UPDATE DOCTOR IMAGE =================
+const updateDoctorImage = async (req, res) => {
+  try {
+    const { image } = req.body;
+
+    if (!image) {
+      return res.status(400).json({
+        message: "Image path is required.",
+      });
+    }
+
+    const doctorProfile = await DoctorProfile.findOne({
+      userId: req.params.id,
+    });
+
+    if (!doctorProfile) {
+      return res.status(404).json({
+        message: "Doctor profile not found.",
+      });
+    }
+
+    doctorProfile.image = image;
+
+    await doctorProfile.save();
+
+    return res.status(200).json({
+      message: "Doctor image updated successfully.",
+      image: doctorProfile.image,
+    });
+  } catch (error) {
+    console.error("Update doctor image error:", error);
+
+    return res.status(500).json({
+      message: "Failed to update doctor image.",
+    });
+  }
+};
 module.exports = {
   createDoctor,
+  getPatientCount,
+  updateDoctorImage,
 };
