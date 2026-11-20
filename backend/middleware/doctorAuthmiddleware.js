@@ -7,7 +7,7 @@ const protectDoctor = async (req, res, next) => {
 
     console.log("Cookies received:", req.cookies);
 
-    const token = req.cookies.token;
+    const token = req.cookies.token || req.cookies.doctorToken;
 
     console.log("Token received:", token);
 
@@ -26,10 +26,8 @@ const protectDoctor = async (req, res, next) => {
 
     console.log("Decoded token:", decoded);
 
-    // Find doctor using decoded.id
-    const doctor = await User.findById(
-      decoded.id
-    ).select("-password");
+    const doctorId = decoded.id || decoded.userId;
+    const doctor = await User.findById(doctorId).select("-password");
 
     // Check if user exists
     if (!doctor) {

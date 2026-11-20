@@ -2,6 +2,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
+const getAuthCookieOptions = require("../utils/authCookieOptions");
 
 // ================= REGISTER USER =================
 const registerUser = async (req, res) => {
@@ -90,9 +91,7 @@ const loginUser = async (req, res) => {
 
     // Store JWT in HTTP-only cookie
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // Change to true when using HTTPS in production
-      sameSite: "lax",
+      ...getAuthCookieOptions(req),
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -117,10 +116,8 @@ const loginUser = async (req, res) => {
 // ================= LOGOUT USER =================
 const logoutUser = (req, res) => {
   res.cookie("token", "", {
-    httpOnly: true,
+    ...getAuthCookieOptions(req),
     expires: new Date(0),
-    sameSite: "lax",
-    secure: false,
   });
 
   return res.status(200).json({

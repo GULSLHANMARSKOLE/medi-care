@@ -1,7 +1,6 @@
 import api from "../api";
 
 const API_URL = "/api/doctors";
-const AUTH_URL = "/api/auth";
 
 // Get all doctors
 export const getDoctors = async () => {
@@ -22,7 +21,7 @@ export const getDoctorById = async (id) => {
 // Doctor login
 export const loginDoctor = async (credentials) => {
   const response = await api.post(
-    `${AUTH_URL}/login`,
+    `${API_URL}/login`,
     credentials,
     {
       withCredentials: true,

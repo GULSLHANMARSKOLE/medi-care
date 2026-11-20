@@ -30,7 +30,7 @@ function DoctorLogin() {
       });
 
       // Make sure the logged-in account is actually a doctor
-      if (response.user?.role !== "doctor") {
+      if (response.doctor?.role !== "doctor") {
         setError("This account is not registered as a doctor.");
         return;
       }
@@ -38,7 +38,7 @@ function DoctorLogin() {
       // Store user information for Navbar
       localStorage.setItem(
         "user",
-        JSON.stringify(response.user)
+        JSON.stringify(response.doctor)
       );
 
       // JWT is stored in HttpOnly cookie by backend

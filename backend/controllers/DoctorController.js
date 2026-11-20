@@ -2,6 +2,8 @@ const User = require("../models/User");
 const DoctorProfile = require("../models/Doctorprofile");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const getAuthCookieOptions = require("../utils/authCookieOptions");
+
 const registerDoctor = async (req, res) => {
   try {
     const {
@@ -123,9 +125,7 @@ const loginDoctor = async (req, res) => {
     );
 
     res.cookie("doctorToken", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      ...getAuthCookieOptions(req),
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
